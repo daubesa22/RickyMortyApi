@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">RickyMortyApi</string>
+    <string name="back">Back to list</string>
+</resources>
