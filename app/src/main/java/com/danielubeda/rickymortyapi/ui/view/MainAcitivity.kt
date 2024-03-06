@@ -10,8 +10,10 @@ import androidx.navigation.compose.rememberNavController
 import com.danielubeda.rickymortyapi.ui.navigation.AppNavigator
 import com.danielubeda.rickymortyapi.ui.theme.RickyMortyApiTheme
 import com.danielubeda.rickymortyapi.ui.viewmodel.CharacterViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-class MainActivity : ComponentActivity() {
+@AndroidEntryPoint
+class MainActivity : ComponentActivity()  {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
