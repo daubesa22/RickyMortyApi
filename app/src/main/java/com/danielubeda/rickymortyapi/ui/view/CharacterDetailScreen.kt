@@ -27,6 +27,7 @@ import com.danielubeda.rickymortyapi.model.Character
 @Composable
 fun CharacterDetailScreen(navController: NavController, character: Character) {
     Scaffold(
+        containerColor = colorResource(id = R.color.white),
         topBar = {
             TopAppBar(
                 title = {
@@ -71,7 +72,10 @@ fun CharacterDetailContent(character: Character, padding: PaddingValues) {
         item {
             Card(
                 modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(8.dp)
+                shape = RoundedCornerShape(8.dp),
+                colors = CardDefaults.cardColors(
+                    containerColor = colorResource(id = R.color.background),
+                ),
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
                     Image(

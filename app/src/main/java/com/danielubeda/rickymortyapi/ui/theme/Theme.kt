@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.view.WindowCompat
+import com.danielubeda.rickymortyapi.R
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
@@ -50,7 +51,7 @@ fun RickyMortyApiTheme(
 
     SideEffect {
         window?.let { win ->
-            win.statusBarColor = android.graphics.Color.WHITE
+            win.statusBarColor = context.getColor(R.color.nav_bar)
             WindowCompat.getInsetsController(win, win.decorView)?.isAppearanceLightStatusBars = true
         }
     }

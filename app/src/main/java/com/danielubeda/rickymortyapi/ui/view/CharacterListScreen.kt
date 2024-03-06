@@ -24,16 +24,16 @@ import com.danielubeda.rickymortyapi.model.Character
 @Composable
 fun CharacterListScreen(characters: List<Character>, onCharacterClick: (Int) -> Unit) {
     Scaffold(
+        containerColor = colorResource(id = R.color.white),
         topBar = {
             TopAppBar(
                 title = {
-                    Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+                    Box(modifier = Modifier.fillMaxWidth().padding(16.dp), contentAlignment = Alignment.Center) {
                         Image(
-                            painter = rememberAsyncImagePainter(model = R.drawable.logorickymorty),
+                            painter = rememberAsyncImagePainter(model = R.drawable.logo),
                             contentDescription = "Logo Rick y Morty",
                             modifier = Modifier
-                                .size(60.dp)
-                                .clip(RoundedCornerShape(50.dp)),
+                                .width(200.dp),
                             contentScale = ContentScale.Crop
                         )
                     }
