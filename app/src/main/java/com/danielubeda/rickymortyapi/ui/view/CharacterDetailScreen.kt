@@ -1,6 +1,7 @@
 package com.danielubeda.rickymortyapi.ui.view
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -46,7 +47,10 @@ fun CharacterDetailScreen(navController: NavController, character: Character) {
                 },
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
-                        Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = stringResource(R.string.back))
+                        Icon(
+                            imageVector = Icons.Filled.ArrowBack,
+                            contentDescription = stringResource(R.string.back)
+                        )
                     }
                 },
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
@@ -72,7 +76,7 @@ fun CharacterDetailContent(character: Character, padding: PaddingValues) {
         item {
             Card(
                 modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(8.dp),
+                shape = RoundedCornerShape(16.dp),
                 colors = CardDefaults.cardColors(
                     containerColor = colorResource(id = R.color.background),
                 ),
@@ -84,6 +88,8 @@ fun CharacterDetailContent(character: Character, padding: PaddingValues) {
                         modifier = Modifier
                             .size(150.dp)
                             .clip(RoundedCornerShape(75.dp))
+                            .border(2.dp, Color.White, CircleShape)
+                            .fillMaxWidth()
                             .align(Alignment.CenterHorizontally),
                         contentScale = ContentScale.Crop
                     )
@@ -100,22 +106,40 @@ fun CharacterDetailContent(character: Character, padding: PaddingValues) {
         }
         item {
             Text(
-                "Episodes:",
+                "Episodes",
                 style = MaterialTheme.typography.titleMedium,
                 modifier = Modifier.padding(vertical = 4.dp)
             )
         }
-        items(character.episode) { episode ->
-            Text(text = episode, style = MaterialTheme.typography.bodyLarge, modifier = Modifier.padding(vertical = 2.dp))
+        items(character.episode) {
+                episode ->
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(8.dp),
+                colors = CardDefaults.cardColors(
+                    containerColor = colorResource(id = R.color.background),
+                )
+            ) {
+                Text(
+                    text = episode,
+                    style = MaterialTheme.typography.bodyLarge,
+                    modifier = Modifier.fillMaxWidth().padding(8.dp)
+                )
+            }
         }
     }
 }
 
 @Composable
 fun DetailItem(label: String, value: String) {
-    Column(modifier = Modifier.padding(bottom = 8.dp)) {
-        Text("$label:", style = MaterialTheme.typography.bodyMedium, color = Color.Gray)
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(label, style = MaterialTheme.typography.bodyLarge, color = Color.Gray)
         Text(value, style = MaterialTheme.typography.bodyLarge)
-        Divider(modifier = Modifier.padding(vertical = 4.dp))
+        //Divider(modifier = Modifier.padding(8.dp))
     }
 }
